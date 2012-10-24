@@ -8,12 +8,12 @@
 <script type="text/javascript">
 $(function(){
   var url = openpne.apiBase;
-  url += 'comopt/list?';
-  url += 'id=<?php echo $id; ?>';
-  url += '&type=<?php echo $type; ?>';
-  url += '&apiKey=';
-  url += openpne.apiKey;
-  $.getJSON( url, function(json) {
+      url += 'comopt/list?';
+      url += 'id=<?php echo $id; ?>';
+      url += '&type=<?php echo $type; ?>';
+      url += '&apiKey=';
+      url += openpne.apiKey;
+  $.getJSON(url, function(json) {
     $result = $('#uploadedFileTemplate').tmpl(json.data);
 <?php if ('topic' == $type): ?>
       $('#uploadedFileList').html($result);

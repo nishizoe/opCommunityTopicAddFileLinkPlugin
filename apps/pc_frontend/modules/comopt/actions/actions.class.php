@@ -31,12 +31,12 @@ class comoptActions extends sfActions
     $originalFileName = $file['original_filename'];
     if (!$data)
     {
-      return $this->renderJSON(array('status' => 'error','message' => "file download error"));
+      return $this->renderJSON(array('status' => 'error', 'message' => "file download error"));
     }
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $type = $finfo->buffer($data);
     $this->getResponse()->setHttpHeader('Content-Type',$type);
-    $this->getResponse()->setHttpHeader('Content-Disposition','attachment; filename="'.$originalFileName.'"');
+    $this->getResponse()->setHttpHeader('Content-Disposition', 'attachment; filename="'.$originalFileName.'"');
     return $this->renderText($data);
   }
 }

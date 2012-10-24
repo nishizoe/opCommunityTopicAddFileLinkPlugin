@@ -3,10 +3,14 @@ class comoptActions extends opJsonApiActions
 {
   public function executeList(sfWebRequest $request)
   {
-    // 2系のDB検索のため、直接SqLをたたきます
     $communityId = $request['id'];
     $type = $request['type'];
-    // todo:n エラー処理
+    if ('' != $communityId || '' != $type)
+    {
+
+      return $this->renderJSON(array('status' => 'error' ,'message' => "parameter error."));
+    }
+
     $sql = '';
     $sql .= 'select c_file_id, filename, original_filename from c_file';
     $sql .= ' where filename like "';
