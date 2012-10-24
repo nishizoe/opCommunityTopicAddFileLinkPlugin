@@ -5,7 +5,7 @@ class comoptActions extends opJsonApiActions
   {
     $communityId = $request['id'];
     $type = $request['type'];
-    if ('' != $communityId || '' != $type)
+    if ('' == $communityId || '' == $type)
     {
 
       return $this->renderJSON(array('status' => 'error' ,'message' => "parameter error."));
