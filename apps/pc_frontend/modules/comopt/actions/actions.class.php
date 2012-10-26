@@ -23,7 +23,7 @@ class comoptActions extends sfActions
     $sql .= $filename;
     $sql .= '"';
 
-    $conn = Doctrine::getTable('Member')->getConnection();
+    $conn = Doctrine_Manager::getInstance()->getConnection();
     $files = $conn->fetchAll($sql);
     $this->forward404Unless($files);
     $file = $files[0];
@@ -37,6 +37,7 @@ class comoptActions extends sfActions
     $type = $finfo->buffer($data);
     $this->getResponse()->setHttpHeader('Content-Type',$type);
     $this->getResponse()->setHttpHeader('Content-Disposition', 'attachment; filename="'.$originalFileName.'"');
+
     return $this->renderText($data);
   }
 }

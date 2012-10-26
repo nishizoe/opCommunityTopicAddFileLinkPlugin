@@ -17,7 +17,7 @@ $(function(){
     $result = $('#uploadedFileTemplate').tmpl(json.data);
 <?php if ('topic' == $type): ?>
       $('#uploadedFileList').html($result);
-      $('#uploadedFileList').show(); 
+      $('#uploadedFileList').show();
 <?php elseif ('comment' == $type): ?>
     $('#uploadedFileCommentList_<?php echo $id; ?>').html($result);
     $('#uploadedFileCommentList_<?php echo $id; ?>').show();

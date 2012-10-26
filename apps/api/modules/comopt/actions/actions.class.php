@@ -7,7 +7,6 @@ class comoptActions extends opJsonApiActions
     $type = $request['type'];
     if ('' == $communityId || '' == $type)
     {
-
       return $this->renderJSON(array('status' => 'error' ,'message' => "parameter error."));
     }
 
@@ -24,7 +23,7 @@ class comoptActions extends opJsonApiActions
     $sql .= $communityId.'_4_%';
     $sql .= '"';
 
-    $conn = Doctrine::getTable('Member')->getConnection();
+    $conn = Doctrine_Manager::getInstance()->getConnection();
     $files = $conn->fetchAll($sql);
 
     return $this->renderJSON(array('status' => 'success', 'data' => $files));
