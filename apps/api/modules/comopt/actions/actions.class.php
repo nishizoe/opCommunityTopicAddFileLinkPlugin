@@ -23,7 +23,7 @@ class comoptActions extends opJsonApiActions
     $sql .= $communityId.'_4_%';
     $sql .= '"';
 
-    $conn = Doctrine::getTable('Community')->getConnection();
+    $conn = Doctrine_Manager::getInstance()->getCurrentConnection();
     $files = $conn->fetchAll($sql);
 
     return $this->renderJSON(array('status' => 'success', 'data' => $files));
