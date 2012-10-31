@@ -23,7 +23,7 @@ class comoptActions extends sfActions
     $sql .= $filename;
     $sql .= '"';
 
-    $conn = Doctrine_Manager::getInstance()->getConnection();
+    $conn = Doctrine::getTable('Community')->getConnection();
     $files = $conn->fetchAll($sql);
     $this->forward404Unless($files);
     $file = $files[0];
